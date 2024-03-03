@@ -1,8 +1,6 @@
 //! Defines a builder for the given struct
 extern crate proc_macro;
 
-use std::fmt::format;
-
 use proc_macro::TokenStream;
 use quote::{format_ident, quote, quote_spanned};
 use syn::{parse_macro_input, spanned::Spanned, DeriveInput};
@@ -42,7 +40,6 @@ pub fn consumer(input: TokenStream) -> TokenStream {
     let ret = consumer_from_struct(name, data);
     ret
 }
-
 
 fn consumer_from_struct(id: &syn::Ident, item: &syn::DataStruct) -> TokenStream {
     let mut field_names: Vec<&syn::Ident> = vec![];
@@ -215,8 +212,6 @@ fn consumer_functions(
         #complete_builder
     )
 }
-
-
 
 fn builder_from_struct(id: &syn::Ident, item: &syn::DataStruct) -> TokenStream {
     let mut field_names: Vec<&syn::Ident> = vec![];
